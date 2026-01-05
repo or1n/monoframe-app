@@ -88,6 +88,14 @@ If pushing over HTTPS prompts for credentials, use a GitHub personal access toke
 - Avoid committing secrets; use environment variables and `.env` files.
 - For resource-constrained hosts (e.g., Synology), `images.unoptimized` is set to `true` intentionally.
 
+### Production performance & modern builds
+
+- This project includes a `browserslist` in `package.json` that targets modern browsers. Building with `pnpm build` will prefer modern JS bundles and reduce legacy polyfills. If you require older browser support (IE11 or very old engines), adjust `browserslist` accordingly.
+
+### Nginx hardening example
+
+See `deploy/nginx-hardening.conf` for an example Nginx reverse-proxy configuration with rate-limiting, caching headers, and notes about enabling Brotli and HSTS. This is a starting point you can adapt for Synology or other reverse-proxy hosts.
+
 ---
 
 ## Contributing & CI

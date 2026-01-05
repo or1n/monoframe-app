@@ -16,6 +16,14 @@
     "upgrade:minor": "npx npm-check-updates -u --target minor && npm install",
     "check": "npm run lint && npm run audit"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    ">= 0.5%",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",

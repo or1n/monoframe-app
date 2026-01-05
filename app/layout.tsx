@@ -27,6 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#F2F2F2" />
 
         {/* Minimal critical CSS inlined to speed up first render */}
+        <link rel="preload" href="/_next/static/chunks/app_globals_71f961d1.css" as="style" onLoad="this.rel='stylesheet'" />
+        <noscript><link rel="stylesheet" href="/_next/static/chunks/app_globals_71f961d1.css" /></noscript>
+
         <style>{`
           /* Critical: body background + primary layout */
           html,body{background:var(--background);color:var(--foreground);}
@@ -34,6 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .skip-link:focus, .skip-link:active{position:static;width:auto;height:auto;margin:8px;padding:8px;background:var(--accent);color:var(--background);z-index:9999}
           main{min-height: calc(100vh - 96px);display:block}
           nav ul{list-style:none;padding:0;margin:0;display:flex;gap:1.5rem;align-items:center;justify-content:center}
+          h1{font-size:clamp(2.5rem,10vw,7rem);line-height:1}
+          nav a{font-size:clamp(1.25rem,2.5vw,2.4rem);font-weight:600}
+          footer{background:transparent}
         `}</style>
 
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" />
