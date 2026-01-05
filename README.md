@@ -1,56 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# monoframe-app
 
-## Getting Started
+Monoframe — a small Next.js App Router site for a design & photography portfolio. This README documents how to run and contribute from a Linux/WSL environment so contributors can reproduce your local setup.
 
-First, run the development server:
+---
+
+## Quick start (WSL / Ubuntu)
+
+1. Install Node.js LTS and enable Corepack (provides `pnpm`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# on Ubuntu (WSL)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs build-essential
+corepack enable
+corepack prepare pnpm@latest --activate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies and run the dev server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open http://localhost:3000 in your browser. If another process uses `3000`, Next will choose the next available port (check terminal output).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Production build & start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm build
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This produces an optimized `.next` build and starts a Node server.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Useful commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `pnpm dev` — Start dev server (Turbopack; fast HMR)
+- `pnpm build` — Create production build
+- `pnpm start` — Start production server
+- `pnpm lint` — Run ESLint
+- `pnpm audit` — Run npm audit to surface vulnerabilities
 
-## Deployment & Security Notes (Synology)
+---
 
-- Use HTTPS: terminate TLS at your Synology reverse proxy or a fronting Nginx container. See `deploy/synology-nginx-example.conf` for a sample config.
-- Keep secrets out of the repo: use environment variables and add a `.env` file on the NAS (see `.env.example`).
-- Automated dependency updates: Dependabot is configured via `.github/dependabot.yml` to open weekly PRs.
-- CI: a basic GitHub Actions workflow is added at `.github/workflows/ci.yml` that runs ESLint and `npm audit`.
-- Theme init: The small theme-initialization script was moved to `public/theme-init.js` to avoid inline scripts and allow a stricter CSP.
+## Project notes & conventions
 
-If you want, I can prepare a Synology DSM step-by-step guide for enabling a reverse proxy and installing TLS certificates (Let's Encrypt) on your NAS.
+- Framework: Next.js App Router (see `app/`).
+- Styling: Tailwind CSS (global tokens in `app/globals.css`).
+- App state: `context/AppContext.tsx` exposes `useApp()` for theme, language and small UX flags.
+- Pre-hydration script: `public/theme-init.js` sets theme class before React hydration to avoid layout flashes — kept intentionally in `public/` for CSP compatibility.
 
-## Security & Deployment Notes
+LocalStorage keys used by the app: `mono-lang`, `mono-theme`, `mono-color`.
 
-- **HTTP Security Headers:** This project now sets secure HTTP headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy, Referrer-Policy) via `next.config.ts`.
-- **Environment variables:** Add production secrets to your Synology environment and do not commit them. Use the provided `.env.example` as a template.
-- **HTTPS / Reverse proxy (Synology):** Terminate HTTPS at the Synology reverse proxy (or a router) and forward traffic to the Node.js process over localhost. Ensure HSTS is enabled and renew certificates automatically (Let's Encrypt).
-- **Dependency checks:** Run `npm run audit` and enable Dependabot or Snyk for automated vulnerability alerts.
-- **Inline scripts:** The app currently uses a small inline script to set theme before hydration. Consider migrating that to a server-injected nonce or next/script for stricter CSP.
+---
 
-If you'd like, I can add CI checks, Dependabot config, or migrate the inline theme script to a nonce-based approach.
+## Git / GitHub
+
+This repository already has an `origin` remote configured. To add or change a remote to a different GitHub repo, run:
+
+```bash
+# set or replace origin
+git remote set-url origin https://github.com/USERNAME/REPO.git
+# verify
+git remote -v
+```
+
+To push your local commits to GitHub:
+
+```bash
+git add -A
+git commit -m "docs: improve README and local run instructions"
+git push origin main
+```
+
+If pushing over HTTPS prompts for credentials, use a GitHub personal access token or set up SSH keys and use the `git@github.com:USERNAME/REPO.git` URL.
+
+---
+
+## Security & deployment reminders
+
+- `next.config.ts` injects HTTP security headers for production. During development those headers are skipped to avoid blocking dev runtime.
+- Avoid committing secrets; use environment variables and `.env` files.
+- For resource-constrained hosts (e.g., Synology), `images.unoptimized` is set to `true` intentionally.
+
+---
+
+## Contributing & CI
+
+- CI: a GitHub Actions workflow runs ESLint and `npm audit` (see `.github/workflows/ci.yml`).
+- Dependabot is enabled to open weekly dependency update PRs.
+- If you'd like, I can add tests or type-checking CI steps.
+
+---
+
+## Contact
+
+Official contact for the website: info@monoframe.nl
+
