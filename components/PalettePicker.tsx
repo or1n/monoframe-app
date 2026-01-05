@@ -23,10 +23,19 @@ export default function PalettePicker() {
           aria-label={`Select ${p.label} color theme`}
           aria-pressed={colorTheme === p.key}
           title={`${p.label} theme`}
-          className={`w-5 h-5 rounded-full border-2 border-white/20 shadow-md hover:scale-110 transition-transform focus:outline-none focus:ring-2 focus:ring-white/50 ${
-            colorTheme === p.key ? 'ring-2 ring-offset-2 ring-white/40 scale-110' : ''
-          }`}
-          style={{ background: p.color }}
+          style={{
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+            background: p.color,
+            border: colorTheme === p.key ? '2px solid currentColor' : '1px solid rgba(128,128,128,0.2)',
+            opacity: colorTheme === p.key ? 1 : 0.6,
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            transform: colorTheme === p.key ? 'scale(1.1)' : 'scale(1)'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = colorTheme === p.key ? '1' : '0.6'}
         />
       ))}
     </div>

@@ -21,12 +21,12 @@ export default function Home() {
   if (!mounted) return <div className="min-h-screen w-full bg-[var(--background)]" />;
 
   return (
-    <div id="content" className="min-h-[calc(100vh-200px)] w-full flex items-center justify-center px-6 py-12">
+    <div id="content" className="flex-1 w-full flex items-center justify-center px-6 py-20 md:px-12">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="flex flex-col items-center gap-12 md:gap-16 text-center max-w-5xl w-full"
+        className="flex flex-col items-center gap-8 md:gap-12 text-center max-w-4xl w-full"
       >
         <h1 className="text-[clamp(2.5rem,10vw,7rem)] font-black tracking-[0.25em] leading-tight select-none">
           MONOFRAME

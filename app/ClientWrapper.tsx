@@ -23,10 +23,16 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
         <Header />
         
         {/* Main content area */}
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full flex justify-center">
+          <div className="w-full max-w-6xl flex flex-col gap-12 md:gap-16">
+            {children}
+          </div>
+        </main>
         
         {/* Footer - Always visible at bottom */}
-        <Footer />
+        <div className="w-full max-w-6xl self-center">
+          <Footer />
+        </div>
       </div>
     </body>
   );

@@ -44,5 +44,4 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: 'http://127.0.0.1:3000'
-          numberOfRuns: 3
-          chromeFlags: '--no-sandbox --disable-gpu'
+          runs: 3

@@ -68,9 +68,9 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  overflow: hidden;
+  overflow: auto;
   /* Smooth transition for dark mode toggle */
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
 }
 
@@ -91,15 +91,15 @@ body::before {
   image-rendering: crisp-edges;
 }
 
-/* KILL ALL BOXES AND DEFAULTS */
+/* Minimal reset for interactive elements; allow component styles to apply */
 button, a {
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
   -webkit-tap-highlight-color: transparent;
-  color: inherit !important;
-  text-decoration: none !important;
+  color: inherit;
+  text-decoration: none;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
@@ -124,6 +124,10 @@ button:focus-visible, a:focus-visible {
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.no-default-cursor {
+  cursor: none;
 }
 
 /* Accessible skip-link focusable style helper */

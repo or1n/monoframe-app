@@ -3,8 +3,8 @@ import HamburgerMenu from "@/components/HamburgerMenu";
 
 export default function Header() {
   return (
-    <header className="w-full py-6 px-6 md:py-8 md:px-12 relative z-50">
-      <nav className="flex justify-end items-center" aria-label="Main navigation">
+    <header className="w-full border-b border-current/10" style={{position: 'relative', zIndex: 100, background: 'var(--background)'}}>
+      <nav className="flex justify-center items-center py-6" aria-label="Main navigation">
         <HamburgerMenu />
       </nav>
     </header>
