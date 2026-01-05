@@ -22,7 +22,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: { unoptimized: true }, // Good for NAS CPU
   async headers() {
     // Don't inject strict security headers during development — they block
