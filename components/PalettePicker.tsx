@@ -6,6 +6,9 @@ const PALETTES: { key: string; color: string; label: string }[] = [
   { key: "default", color: "#0ea5a4", label: "Default" },
   { key: "indigo", color: "#6366f1", label: "Indigo" },
   { key: "coral", color: "#fb7185", label: "Coral" },
+  { key: "amber", color: "#f59e0b", label: "Amber" },
+  { key: "teal", color: "#14b8a6", label: "Teal" },
+  { key: "rose", color: "#f43f5e", label: "Rose" },
 ];
 
 export default function PalettePicker() {

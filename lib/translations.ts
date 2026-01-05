@@ -1,6 +1,9 @@
 export const translations = {
   en: {
     subtitle: "design and photography",
+    photo: "Photo",
+    design: "Design",
+    creator: "Creator",
     emailLabel: "Email Monoframe",
     callLabel: "Call Monoframe",
     whatsapp: "whatsapp",
@@ -10,6 +13,9 @@ export const translations = {
   },
   nl: {
     subtitle: "vormgeving en fotografie",
+    photo: "Foto",
+    design: "Ontwerp",
+    creator: "Maker",
     emailLabel: "E-mail Monoframe",
     callLabel: "Bel Monoframe",
     whatsapp: "whatsapp",

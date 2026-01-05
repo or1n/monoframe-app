@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const PalettePicker = dynamic(() => import("@/components/PalettePicker"), { ssr: false });
 
@@ -85,7 +87,14 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
         </div>
       )}
 
-      <div className="h-full w-full relative z-20">{children}</div>
+      {mounted && <CustomCursor />}
+
+      <div className="h-full w-full relative z-20 flex flex-col">
+        <div className="flex-1">{children}</div>
+        <div className="pointer-events-auto">
+          <Footer />
+        </div>
+      </div>
     </body>
   );
 }

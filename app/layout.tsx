@@ -29,7 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script src="/theme-init.js" strategy="beforeInteractive" />
       </head>
       <AppProvider>
-        <ClientWrapper>{children}</ClientWrapper>
+        <ClientWrapper>
+          {children}
+        </ClientWrapper>
       </AppProvider>
     </html>
   );
