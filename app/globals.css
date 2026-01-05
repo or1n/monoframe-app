@@ -65,8 +65,12 @@ body::before {
   pointer-events: none;
   opacity: 0.08; 
   filter: contrast(120%) brightness(100%);
-  /* Ensure you have noise.svg in your /public folder */
+  /* High-resolution noise pattern that scales for 4K and higher DPI displays */
   background-image: url("/noise.svg");
+  background-size: auto;
+  background-repeat: repeat;
+  /* Ensure SVG is pixel-perfect on all display densities */
+  image-rendering: crisp-edges;
 }
 
 /* KILL ALL BOXES AND DEFAULTS */

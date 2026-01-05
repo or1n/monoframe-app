@@ -1,19 +1,17 @@
 "use client";
-import { useApp } from "@/context/AppContext";
+import useT from "@/hooks/useT";
 
-export default function ContactPage() {
-  const { lang } = useApp();
+export default function CreatorPage() {
+  const t = useT();
 
   return (
-    <main className="h-screen w-full flex items-center justify-center">
-      <div className="text-center">
-        {/* 2x Bigger Headline */}
-        <h1 className="text-xl md:text-2xl tracking-[0.8em] uppercase font-black text-black dark:text-white mb-6">
-          {lang === "en" ? "under construction" : "in afwachting"}
+    <main id="content" className="h-screen w-full flex items-center justify-center px-6">
+      <div className="text-center max-w-2xl">
+        <h1 className="text-4xl md:text-5xl font-black tracking-widest mb-6">
+          {t("creator")}
         </h1>
-        {/* Solid White italic text */}
-        <p className="text-5xl md:text-7xl font-light tracking-tighter italic lowercase text-black dark:text-white">
-          {lang === "en" ? "coming soon" : "komt er binnenkort aan"}
+        <p className="text-lg md:text-xl opacity-70 leading-relaxed">
+          {t("creatorDescription")}
         </p>
       </div>
     </main>

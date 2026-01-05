@@ -55,6 +55,16 @@ export default function Home() {
             </li>
           </ul>
         </nav>
+
+        <div className="mt-12 flex flex-col md:flex-row gap-6 md:gap-12 items-center text-sm md:text-base opacity-70">
+          <a href={`mailto:${t("email")}`} className="hover:opacity-100 transition-opacity">
+            {t("email")}
+          </a>
+          <span className="hidden md:inline">•</span>
+          <a href="https://wa.me/31" className="hover:opacity-100 transition-opacity">
+            WhatsApp
+          </a>
+        </div>
       </motion.div>
     </main>
   );
