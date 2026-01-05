@@ -96,6 +96,10 @@ If pushing over HTTPS prompts for credentials, use a GitHub personal access toke
 - Dependabot is enabled to open weekly dependency update PRs.
 - If you'd like, I can add tests or type-checking CI steps.
 
+### Lighthouse CI
+
+This repository includes a GitHub Action (`.github/workflows/lighthouse-ci.yml`) that builds the app and runs Lighthouse CI against the production server on pushes and pull requests to `main`. It provides automated performance/accessibility/security scoring so regressions are caught early.
+
 ---
 
 ## Contact
