@@ -5,7 +5,7 @@ export default function PhotographyPage() {
   const t = useT();
 
   return (
-    <main id="content" className="min-h-screen w-full flex items-center justify-center px-6 py-24 md:py-32">
+    <div id="content" className="min-h-[calc(100vh-200px)] w-full flex items-center justify-center px-6 py-12">
       <div className="text-center max-w-4xl">
         <h1 className="text-5xl md:text-7xl font-black tracking-widest mb-8">
           {t("photo")}
@@ -14,6 +14,6 @@ export default function PhotographyPage() {
           {t("placeholder")}
         </p>
       </div>
-    </main>
+    </div>
   );
 }

@@ -22,26 +22,27 @@ export default function HamburgerMenu() {
 
   return (
     <div 
-      className="relative"
+      className="relative z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Hamburger Icon */}
       <button
-        className={`flex flex-col gap-1.5 w-8 h-8 justify-center items-center transition-all duration-300 ${
+        className={`flex flex-col gap-1.5 w-10 h-10 justify-center items-center transition-all duration-300 ${
           isHovered ? "opacity-60" : "opacity-100"
         }`}
-        aria-label="Menu"
+        aria-label="Navigation menu"
         aria-expanded={isHovered}
+        title="Navigation menu"
       >
-        <span className="w-6 h-0.5 bg-current transition-all"></span>
-        <span className="w-6 h-0.5 bg-current transition-all"></span>
-        <span className="w-6 h-0.5 bg-current transition-all"></span>
+        <span className="w-7 h-0.5 bg-current transition-all"></span>
+        <span className="w-7 h-0.5 bg-current transition-all"></span>
+        <span className="w-7 h-0.5 bg-current transition-all"></span>
       </button>
 
       {/* Dropdown Menu */}
       {isHovered && (
-        <div className="absolute right-0 top-full mt-6 flex flex-col gap-6 min-w-[180px] p-4">
+        <div className="absolute right-0 top-full mt-6 flex flex-col gap-6 min-w-[200px] p-4 bg-[var(--background)]/95 backdrop-blur-sm rounded-lg shadow-2xl border border-current/10 z-50">
           {availablePages.map((page) => (
             <Link
               key={page.href}
@@ -51,9 +52,10 @@ export default function HamburgerMenu() {
                 WebkitTextStroke: "1px currentColor",
                 WebkitTextFillColor: "transparent",
               }}
+              title={page.label}
             >
               {page.label}
-              {page.showIcon && <HomeIcon width={20} height={20} strokeWidth={1.5} />}
+              {page.showIcon && <HomeIcon width={20} height={20} strokeWidth={1.5} aria-hidden="true" />}
             </Link>
           ))}
         </div>

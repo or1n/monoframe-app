@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:lan": "next dev -H 0.0.0.0",
+    "dev:brave": "next dev & sleep 2 && (brave-browser http://localhost:3000 || brave http://localhost:3000 || open -a 'Brave Browser' http://localhost:3000 || echo 'Please open http://localhost:3000 in Brave Browser manually')",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

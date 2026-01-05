@@ -16,13 +16,16 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 
   return (
     <body className="antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      {/* Header Navigation */}
-      <Header />
-
       {mounted && <CustomCursor />}
-
-      <div className="min-h-screen w-full relative z-20 flex flex-col">
-        <div className="flex-1">{children}</div>
+      
+      <div className="min-h-screen w-full flex flex-col">
+        {/* Header Navigation - Always visible at top */}
+        <Header />
+        
+        {/* Main content area */}
+        <main className="flex-1">{children}</main>
+        
+        {/* Footer - Always visible at bottom */}
         <Footer />
       </div>
     </body>
