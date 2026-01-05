@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* --- THE GRAIN EFFECT --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999; /* Higher z-index to stay on top of everything */
+  pointer-events: none;
+  
+  /* Increased opacity for visibility */
+  opacity: 0.15; 
+  
+  /* Filter makes the grain sharper and more contrasted */
+  filter: contrast(150%) brightness(100%);
+  
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+body::before {
+  animation: grainAnimation 1s steps(10) infinite;
+}
+/* ------------------------ */
+
+a, button {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar { display: none; }

@@ -1,0 +1,13 @@
+# Use Node.js as the base
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+# Install dependencies and build
+COPY . .
+RUN npm install
+RUN npm run build
+
+# Set the environment and start
+ENV NODE_ENV production
+EXPOSE 3000
+CMD ["npm", "start"]

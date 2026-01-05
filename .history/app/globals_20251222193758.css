@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Subtle Film Grain Effect */
+body::before {
+  content: "";
+  fixed: inset-0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 99;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+a, button {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar { display: none; }

@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* Using system fonts is the fastest way to load (0ms download time) */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  /* Smooth transition for dark mode toggle */
+  transition: background-color 0.5s ease, color 0.5s ease;
+  min-height: 100vh;
+}
+
+/* THE GRAIN - Localized and Optimized */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -100%;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.08; 
+  filter: contrast(120%) brightness(100%);
+  /* Ensure you have noise.svg in your /public folder */
+  background-image: url("/noise.svg");
+}
+
+/* KILL ALL BOXES AND DEFAULTS */
+button, a {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* ACCESSIBILITY: Visible focus for keyboard navigation (PageSpeed fix) */
+button:focus-visible, a:focus-visible {
+  outline: 1px solid var(--foreground) !important;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Ensure interactive elements stay above the grain layer */
+.pointer-events-auto {
+  z-index: 100 !important;
+}
+
+/* Hide scrollbars but keep functionality */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

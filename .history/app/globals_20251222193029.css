@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  /* Hardware acceleration for smooth scaling on high-Hz screens */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  /* Smoother color transitions */
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: background-color, color;
+}
+
+a, a:visited, a:active, a:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+button {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer;
+  color: inherit;
+  will-change: opacity;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

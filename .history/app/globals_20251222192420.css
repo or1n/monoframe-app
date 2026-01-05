@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2; /* Softer White */
+  --foreground: #121212; /* Softer Black */
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease; /* Faster transition feels cleaner */
+}
+
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+button {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer;
+  color: inherit;
+}

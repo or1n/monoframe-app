@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F2F2F2;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #F2F2F2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* THE GRAIN - Noticeable but doesn't block buttons */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -100%; /* Larger to allow for animation movement */
+  z-index: 10;   /* Lower than UI (100) but higher than background */
+  pointer-events: none;
+  opacity: 0.08; 
+  filter: contrast(120%) brightness(100%);
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* KILL ALL BOXES, OUTLINES, AND DEFAULTS */
+button, a {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* Ensure buttons are on top of the grain */
+.pointer-events-auto {
+  z-index: 100 !important;
+}
+
+::-webkit-scrollbar { display: none; }

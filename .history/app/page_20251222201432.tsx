@@ -1,0 +1,67 @@
+"use client";
+import { motion } from "framer-motion";
+import { useApp } from "@/context/AppContext";
+import { useEffect } from "react";
+
+export default function Home() {
+  const { lang, setHasSeenIntro } = useApp();
+
+  useEffect(() => {
+    setHasSeenIntro(true);
+  }, [setHasSeenIntro]);
+
+  // Fluid contact text: 9px to 16px
+  const fluidContact = "clamp(9px, 1vw, 16px)";
+  // Fluid whatsapp text: 7px to 12px
+  const fluidSub = "clamp(7px, 0.7vw, 12px)";
+
+  return (
+    <main className="h-screen w-full flex flex-col items-center justify-center relative px-6">
+      
+      <div className="flex flex-col items-center gap-[8vh] text-center">
+        <h1 className="text-[clamp(2.5rem,10vw,7.5rem)] font-black tracking-[0.25em] leading-tight select-none">
+          MONOFRAME
+        </h1>
+
+        <p className="text-[clamp(1.1rem,2.8vw,2.2rem)] font-light tracking-tighter italic lowercase opacity-70">
+          {lang === "en" ? "coming soon" : "komt er binnenkort aan"}
+        </p>
+      </div>
+
+      {/* FLUID CONTACT INFO */}
+      <div className="fixed bottom-[5%] md:bottom-[10%] w-full px-[8%] md:px-[12%] flex justify-between items-end pointer-events-none">
+        
+        {/* Email */}
+        <div className="pointer-events-auto">
+          <a 
+            href="mailto:info@monoframe.nl" 
+            style={{ fontSize: fluidContact }}
+            className="tracking-widest font-bold hover:opacity-40 pb-[0.2em] border-b border-transparent hover:border-current transition-all"
+          >
+            info@monoframe.nl
+          </a>
+        </div>
+
+        {/* Phone/WhatsApp */}
+        <div className="pointer-events-auto text-right flex flex-col items-end">
+          <a 
+            href="tel:+31682750609" 
+            style={{ fontSize: fluidContact }}
+            className="tracking-widest font-bold hover:opacity-40"
+          >
+            +31 (0) 6 8275 0609
+          </a>
+          <a 
+            href="https://wa.me/31682750609" 
+            target="_blank" 
+            style={{ fontSize: fluidSub }}
+            className="opacity-50 tracking-[0.3em] font-bold hover:opacity-100 uppercase mt-[0.5em]"
+          >
+            whatsapp
+          </a>
+        </div>
+      </div>
+
+    </main>
+  );
+}

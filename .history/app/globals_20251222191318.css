@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* Force modern Sans-Serif and clean styling everywhere */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+/* Kill all button styling/boxes */
+button {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer;
+  color: inherit;
+  outline: none !important;
+  box-shadow: none !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Kill blue/purple links and underlines */
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Smooth selection */
+::selection {
+  background: rgba(125, 125, 125, 0.2);
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
