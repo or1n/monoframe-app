@@ -103,3 +103,7 @@ html {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+/* Accessible skip-link focusable style helper */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus,.skip-link:active{position:static;left:auto;top:auto;width:auto;height:auto;padding:8px 12px;margin:8px;background:var(--accent);color:var(--background);border-radius:4px;z-index:9999}

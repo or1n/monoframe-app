@@ -21,7 +21,7 @@ export default function Home() {
   if (!mounted) return <div className="h-screen w-full bg-[var(--background)]" />;
 
   return (
-    <main className="h-screen w-full flex flex-col items-center justify-center relative px-6 overflow-hidden">
+    <main id="content" className="h-screen w-full flex flex-col items-center justify-center relative px-6 overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

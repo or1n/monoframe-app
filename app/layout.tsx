@@ -23,6 +23,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
 
+        {/* Mobile theme color */}
+        <meta name="theme-color" content="#F2F2F2" />
+
+        {/* Minimal critical CSS inlined to speed up first render */}
+        <style>{`
+          /* Critical: body background + primary layout */
+          html,body{background:var(--background);color:var(--foreground);}
+          .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+          .skip-link:focus, .skip-link:active{position:static;width:auto;height:auto;margin:8px;padding:8px;background:var(--accent);color:var(--background);z-index:9999}
+          main{min-height: calc(100vh - 96px);display:block}
+          nav ul{list-style:none;padding:0;margin:0;display:flex;gap:1.5rem;align-items:center;justify-content:center}
+        `}</style>
+
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" />
         
         {/* Theme initialization moved to public/theme-init.js to avoid inline scripts */}
@@ -30,6 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <AppProvider>
         <ClientWrapper>
+          {/* Skip to content link for keyboard users */}
+          <a href="#content" className="skip-link">Skip to content</a>
           {children}
         </ClientWrapper>
       </AppProvider>

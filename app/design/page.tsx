@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function DesignPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-6">
+    <main id="content" className="min-h-screen flex items-center justify-center p-6">
       <div className="max-w-3xl w-full text-center">
         <h1 className="text-4xl font-black tracking-widest mb-4">Design / Ontwerp</h1>
         <p className="text-lg opacity-70">This is a placeholder for the design portfolio.</p>
