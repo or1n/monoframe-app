@@ -37,6 +37,24 @@
   --muted: #6b7280;
 }
 
+:root[data-color-theme="amber"] {
+  --accent: #f59e0b;
+  --accent-600: #d97706;
+  --muted: #6b7280;
+}
+
+:root[data-color-theme="teal"] {
+  --accent: #14b8a6;
+  --accent-600: #0d9488;
+  --muted: #6b7280;
+}
+
+:root[data-color-theme="rose"] {
+  --accent: #f43f5e;
+  --accent-600: #e11d48;
+  --muted: #6b7280;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

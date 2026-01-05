@@ -11,10 +11,20 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div
-      aria-hidden
-      style={{ left: pos.x - 10, top: pos.y - 10 }}
-      className="pointer-events-none fixed w-5 h-5 rounded-full bg-[var(--accent)] opacity-90 transform-gpu transition-transform ease-linear"
-    />
+    <>
+      {/* Main dot */}
+      <div
+        aria-hidden
+        style={{ left: pos.x - 6, top: pos.y - 6 }}
+        className="pointer-events-none fixed w-3 h-3 rounded-full bg-[var(--accent)] opacity-90 transform-gpu transition-transform ease-linear"
+      />
+      
+      {/* Outer ring */}
+      <div
+        aria-hidden
+        style={{ left: pos.x - 12, top: pos.y - 12 }}
+        className="pointer-events-none fixed w-6 h-6 border border-[var(--accent)] rounded-full opacity-50 transform-gpu transition-transform ease-linear"
+      />
+    </>
   );
 }

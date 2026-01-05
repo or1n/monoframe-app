@@ -1,19 +1,16 @@
 "use client";
 import { useApp } from "@/context/AppContext";
-import { Sun, Moon, Home as HomeIcon } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import Header from "@/components/Header";
 
 const PalettePicker = dynamic(() => import("@/components/PalettePicker"), { ssr: false });
 
 export default function ClientWrapper({ children }: { children: React.ReactNode }) {
   const { lang, setLang, darkMode, setDarkMode } = useApp();
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
   const fluidIcon = "clamp(18px, 2vw, 28px)";
   const fluidText = "clamp(10px, 1.2vw, 16px)";
@@ -29,27 +26,12 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 
   return (
     <body className="antialiased h-screen overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
-      {mounted && (
-        <div className="fixed inset-[5%] md:inset-[8%] pointer-events-none flex flex-col items-center justify-between z-[100]">
-          {/* TOP: Home Icon */}
-          <div className="pointer-events-auto">
-            {!isHome && (
-              <Link 
-                href="/" 
-                className="hover:opacity-40 transition-opacity"
-                aria-label={lang === "en" ? "Back to home" : "Terug naar home"}
-              >
-                <HomeIcon 
-                  width={fluidIcon}
-                  height={fluidIcon}
-                  strokeWidth={1.5} 
-                  aria-hidden="true" 
-                />
-              </Link>
-            )}
-          </div>
+      {/* Header Navigation */}
+      <Header />
 
-          {/* BOTTOM: Toggles */}
+      {mounted && (
+        <div className="fixed inset-x-[5%] md:inset-x-[8%] top-[calc(5%+80px)] md:top-[calc(8%+80px)] pointer-events-none flex flex-col items-end justify-start z-[100]">
+          {/* TOP RIGHT: Toggles */}
           <div className="pointer-events-auto flex items-center gap-6 md:gap-[10vw]">
             <div className="hidden md:block"> <PalettePicker /> </div>
             <div className="md:hidden"> <PalettePicker /> </div>
@@ -90,7 +72,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       {mounted && <CustomCursor />}
 
       <div className="h-full w-full relative z-20 flex flex-col">
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 overflow-auto">{children}</div>
         <div className="pointer-events-auto">
           <Footer />
         </div>
