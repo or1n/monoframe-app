@@ -27,8 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#F2F2F2" />
 
         {/* Minimal critical CSS inlined to speed up first render */}
-        <link rel="preload" href="/_next/static/chunks/app_globals_71f961d1.css" as="style" onLoad="this.rel='stylesheet'" />
+        <link rel="preload" href="/_next/static/chunks/app_globals_71f961d1.css" as="style" />
         <noscript><link rel="stylesheet" href="/_next/static/chunks/app_globals_71f961d1.css" /></noscript>
+        <Script id="load-css" strategy="beforeInteractive">{`
+          const link = document.querySelector('link[rel="preload"][as="style"]');
+          if (link) link.onload = () => { link.rel = 'stylesheet'; };
+        `}</Script>
 
         <style>{`
           /* Critical: body background + primary layout */
