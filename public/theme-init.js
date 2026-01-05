@@ -8,7 +8,7 @@
     // apply persisted color theme (data attribute used by CSS)
     var savedColor = localStorage.getItem('mono-color') || 'default';
     document.documentElement.setAttribute('data-color-theme', savedColor);
-  } catch (e) {
+  } catch {
     // ignore
   }
 })();

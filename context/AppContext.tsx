@@ -19,7 +19,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem("mono-lang") as "en" | "nl" | null;
       return saved ?? "nl";
-    } catch (e) {
+    } catch {
       return "nl";
     }
   });
@@ -29,37 +29,43 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const savedTheme = localStorage.getItem("mono-theme");
       if (savedTheme !== null) return savedTheme === "true";
       return true;
-    } catch (e) {
+    } catch {
       return true;
     }
   });
 
   const [colorTheme, setColorThemeState] = useState<string>(() => {
-    try { return localStorage.getItem("mono-color") || "default"; } catch (e) { return "default"; }
+    try { return localStorage.getItem("mono-color") || "default"; } catch { return "default"; }
   });
 
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
 
   // Reflect theme states on the DOM (no state updates here)
   useEffect(() => {
-    try { document.documentElement.classList.toggle("dark", darkMode); } catch (e) {}
-    try { document.documentElement.setAttribute('data-color-theme', colorTheme); } catch (e) {}
+    try { document.documentElement.classList.toggle("dark", darkMode); } catch {}
+    try { document.documentElement.setAttribute('data-color-theme', colorTheme); } catch {}
   }, [darkMode, colorTheme]);
 
   const setLang = (l: "en" | "nl") => {
     setLangState(l);
-    localStorage.setItem("mono-lang", l);
+    try {
+      localStorage.setItem("mono-lang", l);
+    } catch {}
   };
 
   const setDarkMode = (d: boolean) => {
     setDarkModeState(d);
-    localStorage.setItem("mono-theme", String(d));
+    try {
+      localStorage.setItem("mono-theme", String(d));
+    } catch {}
     document.documentElement.classList.toggle("dark", d);
   };
 
   const setColorTheme = (t: string) => {
     setColorThemeState(t);
-    localStorage.setItem("mono-color", t);
+    try {
+      localStorage.setItem("mono-color", t);
+    } catch {}
     // reflect in DOM for CSS attribute selectors
     document.documentElement.setAttribute('data-color-theme', t);
   };

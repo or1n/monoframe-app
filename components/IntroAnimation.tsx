@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function IntroAnimation({ onComplete }: { onComplete: () => void }) {
@@ -16,7 +16,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
       onComplete();
     }
     return () => clearTimeout(timeout);
-  }, [stage]);
+  }, [stage, onComplete]);
 
   const stages = [
     "Orin Nickolay Mons", // 0

@@ -1,6 +1,5 @@
 "use client";
 import { useApp } from "@/context/AppContext";
-import { motion } from "framer-motion";
 
 export default function PhotographyPage() {
   const { lang } = useApp();
