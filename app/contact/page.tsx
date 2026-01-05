@@ -5,9 +5,9 @@ export default function CreatorPage() {
   const t = useT();
 
   return (
-    <main id="content" className="h-screen w-full flex items-center justify-center px-6">
-      <div className="text-center">
-        <h1 className="text-5xl md:text-7xl font-black tracking-widest mb-6">
+    <main id="content" className="min-h-screen w-full flex items-center justify-center px-6 py-24 md:py-32">
+      <div className="text-center max-w-4xl">
+        <h1 className="text-5xl md:text-7xl font-black tracking-widest mb-8">
           {t("creator")}
         </h1>
         <p className="text-lg md:text-xl opacity-60">

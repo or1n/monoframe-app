@@ -18,15 +18,15 @@ export default function Home() {
   }, [setHasSeenIntro]);
 
   // Respect theme pre-hydration
-  if (!mounted) return <div className="h-screen w-full bg-[var(--background)]" />;
+  if (!mounted) return <div className="min-h-screen w-full bg-[var(--background)]" />;
 
   return (
-    <main id="content" className="h-screen w-full flex flex-col items-center justify-center relative px-6 overflow-hidden">
+    <main id="content" className="min-h-screen w-full flex items-center justify-center px-6 py-24 md:py-32">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="flex flex-col items-center gap-8 text-center"
+        className="flex flex-col items-center gap-12 md:gap-16 text-center max-w-5xl"
       >
         <h1 className="text-[clamp(2.5rem,10vw,7rem)] font-black tracking-[0.25em] leading-tight select-none">
           MONOFRAME
@@ -35,36 +35,6 @@ export default function Home() {
         <p className="text-[clamp(1rem,2vw,1.5rem)] font-light tracking-[0.1em] italic lowercase opacity-60">
           {t("subtitle")}
         </p>
-
-        <nav aria-label="Primary" className="mt-6">
-          <ul className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
-            <li>
-              <a href="/photo" className="text-2xl md:text-4xl font-semibold tracking-widest">
-                {t("photo")}
-              </a>
-            </li>
-            <li>
-              <a href="/design" className="text-2xl md:text-4xl font-semibold tracking-widest">
-                {t("design")}
-              </a>
-            </li>
-            <li>
-              <a href="/creator" className="text-2xl md:text-4xl font-semibold tracking-widest">
-                {t("creator")}
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="mt-12 flex flex-col md:flex-row gap-6 md:gap-12 items-center text-sm md:text-base opacity-70">
-          <a href={`mailto:${t("email")}`} className="hover:opacity-100 transition-opacity">
-            {t("email")}
-          </a>
-          <span className="hidden md:inline">•</span>
-          <a href="https://wa.me/31" className="hover:opacity-100 transition-opacity">
-            WhatsApp
-          </a>
-        </div>
       </motion.div>
     </main>
   );
