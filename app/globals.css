@@ -5,11 +5,36 @@
 :root {
   --background: #F2F2F2;
   --foreground: #121212;
+  --muted: #6b7280;
+  --accent: #0ea5a4; /* default teal */
+  --accent-600: #059669;
 }
 
 .dark {
   --background: #121212;
   --foreground: #F2F2F2;
+  --muted: #9ca3af;
+  --accent: #34d399;
+  --accent-600: #10b981;
+}
+
+/* Color theme variants controlled via data attribute on <html> */
+:root[data-color-theme="default"] {
+  --accent: #0ea5a4;
+  --accent-600: #059669;
+  --muted: #6b7280;
+}
+
+:root[data-color-theme="indigo"] {
+  --accent: #6366f1;
+  --accent-600: #4f46e5;
+  --muted: #6b7280;
+}
+
+:root[data-color-theme="coral"] {
+  --accent: #fb7185;
+  --accent-600: #f43f5e;
+  --muted: #6b7280;
 }
 
 * {

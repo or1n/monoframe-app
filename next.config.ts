@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
   swcMinify: true,
   images: { unoptimized: true }, // Good for NAS CPU
   async headers() {
+    // Don't inject strict security headers during development — they block
+    // Next.js dev runtime (inline scripts and turbopack module scripts).
+    if (process.env.NODE_ENV !== "production") return [];
+
     return [
       {
         source: "/(.*)",

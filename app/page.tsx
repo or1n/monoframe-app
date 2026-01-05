@@ -1,20 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import useT from "@/hooks/useT";
 import { useApp } from "@/context/AppContext";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { lang, setHasSeenIntro } = useApp();
+  const t = useT();
+  const { setHasSeenIntro } = useApp();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setHasSeenIntro(true);
+    // intentionally set mounted after first render to avoid hydratation diffs
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, [setHasSeenIntro]);
 
-  // FIXED: Instead of hardcoded 'bg-black', we use the variable
-  // This prevents the 'broken' look but respects Light/Dark mode
+  // Respect theme pre-hydration
   if (!mounted) return <div className="h-screen w-full bg-[var(--background)]" />;
 
   return (
@@ -31,7 +34,7 @@ export default function Home() {
         </h1>
 
         <p className="text-[clamp(1rem,2vw,1.5rem)] font-light tracking-[0.1em] italic lowercase opacity-60">
-          {lang === "en" ? "design and photography" : "vormgeving en fotografie"}
+          {t("subtitle")}
         </p>
       </motion.div>
 
@@ -41,7 +44,7 @@ export default function Home() {
           <a 
             href="mailto:info@monoframe.nl" 
             className="text-[clamp(10px,1.2vw,15px)] tracking-widest font-bold hover:opacity-40 transition-opacity"
-            aria-label="Email Monoframe"
+            aria-label={t("emailLabel")}
           >
             info@monoframe.nl
           </a>
@@ -51,7 +54,7 @@ export default function Home() {
           <a 
             href="tel:+31682750609" 
             className="text-[clamp(10px,1.2vw,15px)] tracking-widest font-bold hover:opacity-40 transition-opacity"
-            aria-label="Call Monoframe"
+            aria-label={t("callLabel")}
           >
             +31 (0) 6 8275 0609
           </a>
@@ -60,9 +63,9 @@ export default function Home() {
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[clamp(8px,1vw,12px)] opacity-40 tracking-[0.3em] font-bold hover:opacity-100 uppercase"
-            aria-label="Message on WhatsApp"
+            aria-label={t("whatsapp")}
           >
-            whatsapp
+            {t("whatsapp")}
           </a>
         </div>
       </div>

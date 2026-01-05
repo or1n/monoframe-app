@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { AppProvider } from "@/context/AppContext";
 import ClientWrapper from "./ClientWrapper"; 
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* CACHE BUSTING: Forces browser to check for new versions on every visit */}
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" />
         
         {/* Theme initialization moved to public/theme-init.js to avoid inline scripts */}
-        <script src="/theme-init.js" />
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
       </head>
       <AppProvider>
         <ClientWrapper>{children}</ClientWrapper>

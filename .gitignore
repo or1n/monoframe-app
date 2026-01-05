@@ -12,3 +12,4 @@ coverage/
 dist/
 build/
 public/theme-init.js.map
+.history/
